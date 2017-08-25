@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/encodings.xml
+.idea/inspectionProfiles/
+.idea/modules.xml
+.idea/smsm.iml
+.idea/workspace.xml
+node_modules/
+.sass-cache/
+/css/
