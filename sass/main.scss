@@ -28,6 +28,10 @@ a {
 
 @import "func";
 
+//全局变量
+$text-yellow: #ffd200;
+$text-blue: #119bd8;
+
 %textEllipsis{
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -39,7 +43,7 @@ a {
   height:1080px;
   overflow:hidden;
 }
-.board-title{ background:url("../images/bg-board-title.png") no-repeat 14px 0; height:21px; text-indent:26px; font-size:12px; font-weight:bold; color:#FFF;}
+.board-title{ background:url("../images/bg-board-title.png") no-repeat 14px bottom; height:21px; line-height:21px; text-indent:26px; font-size:16px; font-weight:bold; color:#FFF; padding-top:10px; padding-bottom:5px;}
 .eddy{
   @include animation(eddy, 5s, ease, 0s, 1);
 }
@@ -152,341 +156,7 @@ a {
     float:left;
   }
 
-  /* 各月交易趋势 */
-  .board-trade{
-    background:url("../images/bg-board-01.png") no-repeat;
-    width:421px;
-    height:182px;
-    margin-bottom:20px;
-  }
-  .board-trade-title{
-    height:28px;
-    line-height:28px;
-    font-size:10px;
-    color:#119BD8;
-    padding-left:22px;
-    padding-top:5px;
-    position:relative;
 
-    .i-legend-yellow,.i-legend-blue{
-      background-image:url("../images/ICON-legend.png");
-      background-repeat:no-repeat;
-      width:9px;
-      height:9px;
-      display:inline-block;
-      margin-right:3px;
-      vertical-align:middle;
-    }
-    .i-legend-yellow{
-      background-position:0 0;
-    }
-    .i-legend-blue{
-      background-position:0 -18px;
-    }
-
-    .title-memo{
-      display:inline-block;
-      position:absolute;
-      right:0;
-      height:28px;
-      padding-right:12px;
-    }
-  }
-  .board-trade-body{
-    padding:10px 10px 0 14px;
-    height:126px;
-
-    #boardTradeLine{ height:126px;}
-  }
-
-  /* 各标交易额占比 */
-  .board-bid-rate{
-    background:url("../images/bg-board-02.png") no-repeat;
-    width:421px;
-    height:237px;
-    margin-bottom:14px;
-  }
-  .board-bid-rate-title{
-    @extend .board-trade-title;
-  }
-  .board-bid-rate-body{
-    padding:10px;
-    height:178px;
-    background:url("../images/bid-circle.png") no-repeat 50.5% 44%;
-
-    .board-canvas{ height:178px;}
-  }
-
-  /* 近15天资金流情况 */
-  /** 旧款
-  .board-recently{
-    background:url("../images/bg-board-01.png") no-repeat;
-    width:421px;
-    height:182px;
-  }
-  .board-recently-title{
-    @extend .board-trade-title;
-  }
-  .board-recently-body{
-    padding:0 10px;
-
-    #boardRecently{ height:146px;}
-  }
-  */
-  .board-recently{
-    background:url("../images/bg-board-05.png") no-repeat;
-    width:421px;
-    height:197px;
-  }
-  .board-recently-title{
-    @extend .board-trade-title;
-  }
-  .board-recently-body{
-    height:159px;
-    position:relative;
-    overflow:hidden;
-
-    li{
-      display:block;
-      background:url("../images/bg-board-scan-li01.png") no-repeat;
-      width:222px;
-      height:49px;
-      position:absolute;
-      opacity:0;
-
-      &:nth-of-type(1),&:nth-of-type(4){
-        top:18px;
-        left:39px;
-      }
-      &:nth-of-type(2),&:nth-of-type(5){
-        top:82px;
-        left:102px;
-      }
-      &:nth-of-type(3),&:nth-of-type(6){
-        top:40px;
-        left:236px;
-      }
-
-      .title{
-        font-size:8px;
-        color:#119BD8;
-        height:19px;
-        line-height:19px;
-        overflow:hidden;
-        text-indent:9px;
-
-        span{ float:right; padding-right:10px;}
-      }
-
-      .body{
-        font-size:12px;
-        color:#FFCC1C;
-        height:22px;
-        line-height:22px;
-        padding:2px 9px;
-        overflow:hidden;
-        span{ color:#FFF;}
-        b{ font-size:14px; color:#FFCC1C;}
-      }
-    }
-  }
-
-  /* 大数据风控引擎 */
-  .board-scan{
-    background:url("../images/bg-board-01.png") no-repeat;
-    width:421px;
-    height:182px;
-    margin-bottom:20px;
-  }
-  .board-scan-title{
-    @extend .board-trade-title;
-  }
-  .board-scan-body{
-    height:143px;
-    position:relative;
-    overflow:hidden;
-
-    .circle01,.circle02,.circle03{
-      position:absolute;
-      left:50%;
-    }
-
-    .circle01{
-      $width:118px;
-      background:url("../images/cheat-circle01.png") no-repeat;
-      width:$width;
-      height:$width;
-      margin-left:-$width / 2;
-      top:10px;
-      @include animation(rotateClockWise, 10s, linear);
-    }
-    .circle02{
-      $width:203px;
-      background:url("../images/cheat-circle02.png") no-repeat;
-      width:$width;
-      height:$width;
-      margin-left:-$width / 2;
-      top:-33px;
-      @include animation(rotateAntiClockWise, 15s, linear);
-    }
-    .circle03{
-      $width:294px;
-      background:url("../images/cheat-circle03.png") no-repeat;
-      width:$width;
-      height:$width;
-      margin-left:-$width / 2;
-      top:-79px;
-      @include animation(rotateClockWise, 45s, linear);
-    }
-
-    li{
-      display:block;
-      background:url("../images/bg-board-scan-li01.png") no-repeat;
-      width:222px;
-      height:49px;
-      position:absolute;
-      opacity:0;
-
-      &:nth-of-type(1),&:nth-of-type(4){
-        top:18px;
-        left:39px;
-      }
-      &:nth-of-type(2),&:nth-of-type(5){
-        top:82px;
-        left:102px;
-      }
-      &:nth-of-type(3),&:nth-of-type(6){
-        top:40px;
-        left:236px;
-      }
-
-      .title{
-        font-size:8px;
-        color:#119BD8;
-        height:19px;
-        line-height:19px;
-        overflow:hidden;
-        text-indent:9px;
-      }
-
-      .body{
-        font-size:12px;
-        color:#FFCC1C;
-        height:22px;
-        line-height:22px;
-        padding:2px 9px;
-        overflow:hidden;
-        span{ color:#FFF;}
-      }
-    }
-  }
-
-
-  /* 反欺诈识别结果 */
-  .board-cheat-result{
-    @extend .board-bid-rate;
-
-    .board-cheat-result-title{
-      @extend .board-trade-title;
-    }
-    .board-cheat-result-body{
-      @extend .board-bid-rate-body;
-      background:none;
-    }
-  }
-
-  /* 系统拒绝原因 */
-  .board-reject-top4{
-    background:url("../images/bg-board-06.png") no-repeat;
-    width:421px;
-    height:198px;
-
-    .board-reject-top4-title{
-      @extend .board-trade-title;
-    }
-    .board-reject-top4-body{
-      @extend .board-bid-rate-body;
-      height:150px;
-      background:none;
-    }
-    ul{ overflow:hidden; padding-left:33px; padding-top:5px;}
-    li{
-      width:160px;
-      height:52px;
-      padding:7px;
-      margin-bottom:4px;
-      float:left;
-      position:relative;
-      overflow:hidden;
-    }
-    .item-l{
-      width:52px;
-      height:52px;
-      position:absolute;
-      top:7px;
-      left:7px;
-    }
-    .circles-text{
-      color: #FFD200 !important;
-      font-size: 12px !important;
-      font-weight: 700 !important;
-    }
-    .item-r{
-      b{
-        display:block;
-        @include animateNums(18px, 12px, 8px);
-      }
-      padding-top:7px;
-      padding-left:60px;
-      font-size:10px;
-      color:#FFF;
-    }
-  }
-}
-
-.main-footer{
-  $height: 47px;
-
-  .title{
-    width:81px;
-    height:$height;
-    padding-left:69px;
-    background:url("../images/bg-board-title.png") no-repeat 58px 4px;
-    line-height:24px;
-    font-size:15px;
-    font-weight:bold;
-    color:#FFF;
-    float:left;
-  }
-
-  .body{
-    background:url("../images/bg-main-footer.png") no-repeat;
-    width:1665px;
-    height:27px;
-    line-height:27px;
-    padding:1px 10px 1px 29px;
-    float:left;
-
-    ul{ }
-    li{
-      display:block;
-      float:left;
-      width:560px;
-      line-height:12px;
-      height:12px;
-      border-left:2px solid #FED256;
-      padding-left:5px;
-      padding-right:75px;
-      color:#FFF;
-      font-size:14px;
-    }
-  }
-}
-.main-footer-wrap{
-  width:100%;
-  padding-top:7px;
-  height:20px;
-  overflow:hidden;
 }
 
 /* 左右框架*/
@@ -514,7 +184,7 @@ a {
     position:relative;
     font-size:18px;
     font-weight:bold;
-    color:#FFF;
+    color:$text-yellow;
 
     i{
       background-image:url("../images/ICON-sys.png");
@@ -551,6 +221,7 @@ a {
         width:26px;
         height:20px;
         margin-right:12px;
+        vertical-align:middle;
       }
 
       .i-coins{ background-position:0 -31px; }
@@ -583,7 +254,6 @@ a {
   .page-body-r{
     width:$width - 532px;
 
-    .board-title{ margin-top:10px;}
   }
 }
 .logo-tuandai{
@@ -595,10 +265,60 @@ a {
   right:10px;
 }
 
-/* 房贷 | 车贷 */
+/* 车贷 */
 .page01{
   .page-title{
     i{ background-position:0 0; }
+  }
+
+  .board-track{
+    background:url("../images/bg-board-track.png") no-repeat;
+    width:402px;
+    $height:148px;
+    height:$height;
+    padding:7px 4px 7px 16px;
+
+    .side-l,.side-r{
+      height:$height;
+      float:left;
+      overflow:hidden;
+    }
+
+    .side-l{
+      width:110px;
+      padding-top:8px;
+
+      dt,dd{
+        font-size:12px;
+        float:left;
+        height:30px;
+        line-height:30px;
+      }
+      dt{
+        text-align:right;
+        width:45px;
+        color:$text-blue;
+        overflow:hidden;
+      }
+
+      dd{
+        width:65px;
+        color:#FFF;
+        @extend %textEllipsis;
+      }
+
+      p{
+        color:$text-yellow;
+        font-size:14px;
+        text-indent:10px;
+        height:30px;
+        line-height:30px;
+      }
+    }
+
+    .side-r{
+      width:292px;
+    }
   }
 
   .page-body-l{
@@ -839,171 +559,11 @@ a {
       }
 
     }
-
-    .business-comb{
-      background:url("../images/business-comb.png") no-repeat;
-      width:444px;
-      height:227px;
-      position:absolute;
-      left:50px;
-      top:72px;
-
-      i{
-        display:block;
-        width:62px;
-        height:69px;
-        position:absolute;
-        background-image:url("../images/ICON-sys.png");
-        background-repeat:no-repeat;
-
-        &:nth-of-type(1){ background-position:0 -51px; left:309px; top:0;
-          @include animation(breatheIcon, 9s)
-        }
-        &:nth-of-type(2){ background-position:-63px -51px; left:32px; top:61px;
-          @include animation(breatheIcon, 6s, ease, 4s)
-        }
-        &:nth-of-type(3){ background-position:-126px -51px; left:135px; top:61px;
-          @include animation(breatheIcon, 11s, ease, 10s)
-        }
-        &:nth-of-type(4){ background-position:-189px -51px; left:267px; top:61px;
-          @include animation(breatheIcon, 11s, ease, 4s)
-        }
-        &:nth-of-type(5){ background-position:-252px -51px; left:85px; top:124px;
-          @include animation(breatheIcon, 6s, ease, 7s)
-        }
-        &:nth-of-type(6){ background-position:-315px -51px; left:309px; top:124px;
-          @include animation(breatheIcon, 9s, ease, 9s)
-        }
-      }
-    }
   }
 
   .page-body-r{
     position:relative;
-    .board-title{
-      position:absolute;
-      width:110px;
-      &:nth-of-type(1){ top:20px;}
-      &:nth-of-type(2){ top:183px;}
-    }
 
-    .badge{
-      width:428px;
-      height:208px;
-      position:relative;
-
-      .badge-circle01,.badge-circle02,.badge-circle03,.badge-circle04{
-        width:230px;
-        height:230px;
-        position:absolute;
-        left:100px;
-        top:-7px;
-      }
-      .badge-circle04{
-        background:url("../images/badge-circle04.png") no-repeat;
-        @include animation(rotateClockWise, 45s, linear);
-      }
-      .badge-circle03{
-        background:url("../images/badge-circle03.png") no-repeat;
-        @include animation(rotateAntiClockWise, 15s, linear);
-      }
-      .badge-circle02{
-        background:url("../images/badge-circle02.png") no-repeat;
-        @include animation(rotateClockWise, 10s, linear);
-      }
-      .badge-circle01{
-        background:url("../images/badge-circle01.png") no-repeat;
-        @include animation(rotateAntiClockWise, 15s, linear);
-      }
-      .badge-wings{
-        background:url("../images/badge-wings.png") no-repeat;
-        width:320px;
-        height:55px;
-        position:absolute;
-        top:78px;
-        left:50%;
-        margin-left:-160px;
-      }
-
-      .badge-l01,.badge-l02,.badge-r01,.badge-r02{
-        font-size:12px;
-        color:#FFF;
-        height:18px;
-        line-height:18px;
-        position:absolute;
-      }
-      .badge-l01,.badge-r01{
-        width:93px;
-        height:18px;
-        line-height:18px;
-        top:0;
-      }
-      .badge-l02,.badge-r02{
-        width:75px;
-        top:21px;
-      }
-      .badge-l01,.badge-l02{
-        padding-right:5px;
-        right:227px;
-        text-align:right;
-      }
-      .badge-r01,.badge-r02{
-        left:227px;
-        text-indent:4px;
-      }
-    }
-    .badge-m{
-      width:134px;
-      margin:0 auto;
-      padding-top:83px;
-      text-align:center;
-      color:#FFF;
-      font-size:14px;
-      font-weight:bold;
-      position:relative;
-      z-index:9;
-
-      b{
-        display:block;
-        font-size:20px;
-        color:#FFD200;
-        line-height:35px;
-      }
-    }
-
-    .industry-financing{
-      ul{ overflow:hidden; padding-left:13px;}
-      li{
-        display:block;
-        float:left;
-        background:url("../images/bg-industry-financing-li.png") no-repeat;
-        width:187px;
-        height:65px;
-        color:#FFF;
-        margin-right:20px;
-        margin-bottom:9px;
-
-        .title{
-          height:17px;
-          line-height:17px;
-          text-indent:17px;
-          font-weight:bold;
-          color:#5CB7FE;
-        }
-
-        .body{
-          padding:2px 0;
-          line-height:22px;
-          height:44px;
-          overflow:hidden;
-
-          span{ display:block; height:22px; overflow:hidden; text-indent:17px;}
-          b{
-            @include animateNums(16px, 12px, 8px);
-          }
-        }
-      }
-    }
   }
 }
 
