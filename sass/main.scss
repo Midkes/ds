@@ -57,106 +57,75 @@ $text-blue: #119bd8;
   overflow:hidden;
   float:left;
   background:url("../images/bg-main.jpg") no-repeat;
+  position:relative;
 }
 .main-top{
   background:url("../images/bg-main-top.png") no-repeat;
   width:1892px;
   height:134px;
-  margin:0 auto 13px;
-  position:relative;
+  position:absolute;
+  left:50%;
+  top:0;
+  margin-left:-946px;
   font-size:37px;
   font-weight:bold;
-  text-indent:250px;
   color:#FFF;
+  text-align:center;
+
+  .container{
+    width:840px;
+    position:absolute;
+    left:449px;
+
+    &>span{ font-size:50px; vertical-align:middle;}
+  }
+
+  .bulletin{
+    width:556px;
+    height:80px;
+    position:absolute;
+    right:10px;
+    top:23px;
+    line-height:40px;
+    font-weight:normal;
+
+    dl{ text-align:left; font-size:0; height:40px; }
+    dt,dd{
+      display:inline-block;
+      font-size:18px;
+      height:40px;
+    }
+    dt{
+      text-align:right;
+      width:224px;
+    }
+    dd{
+      width:332px;
+
+      b{
+        font-family:avantgardebold;
+        margin-right:5px;
+        vertical-align:baseline;
+
+        @include animateNums(40px, 30px, 20px);
+      }
+    }
+  }
 
   .i-coins{ background:url("../images/icon-coins.png") no-repeat; display:inline-block; width:63px; height:46px; vertical-align:middle; margin-right:20px;}
   b{
     font-family:avantgardebold;
-    vertical-align:-15%;
-    @include animateNums(124px, 95px, 55px);
+    vertical-align:-10%;
+    @include animateNums(100px, 95px, 55px);
   }
-  &>span{ font-size:50px; vertical-align:middle;}
-
 }
 .logo{
   background:url("../images/logo.png") no-repeat;
-  width:352px;
-  height:59px;
+  width:300px;
+  height:56px;
   position:absolute;
-  top:35px;
-  right:61px;
-}
-.main-bulletin{
-  position:relative;
-  $height:147px;
-  margin-bottom:40px;
-
-  ul{ height:$height;}
-
-  li{
-    background:url("../images/bg-bulletin-li.png") no-repeat;
-    width:436px;
-    height:$height;
-    display:block;
-    text-align:center;
-    position:absolute;
-    top:0;
-
-    &:nth-of-type(1){ left:54px;}
-    &:nth-of-type(2){ left:745px;}
-    &:nth-of-type(3){ left:1417px;}
-
-    .bulletin-title{
-      width:388px;
-      height:64px;
-      color:#FFCC1C;
-      font-size:24px;
-      margin:0 auto;
-      padding:28px 0 10px;
-      b{
-        font-family:avantgardebold;
-        margin-right:7px;
-        @include animateNums(60px, 50px, 30px);
-      }
-    }
-    .bulletin-body{ font-size:24px; color:#2691FF; line-height:42px; height:42px;}
-  }
-}
-.main-body{
-  $height:698px;
-  height:$height;
-
-  .board-title{ margin-bottom:13px;}
-
-  .main-body-l{
-    width:421px;
-    height:$height;
-    padding-left:59px;
-    float:left;
-    overflow:hidden;
-  }
-  .main-body-m{
-    width:949px;
-    height:$height;
-    background:url("../images/bg-mainland.png") no-repeat 38px 19px;
-    float:left;
-    position:relative;
-
-    #mainChina{
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:$height;
-    }
-  }
-  .main-body-r{
-    width:491px;
-    height:$height;
-    float:left;
-  }
-
-
+  top:32px;
+  left:85px;
 }
 
 /* 左右框架*/
@@ -170,7 +139,7 @@ $text-blue: #119bd8;
 .left-frame{}
 .right-frame{}
 
-.page01,.page02,.page03,.page04{
+.page01,.page02,.page03,.page04,.page05,.page06,.page07,.page08{
   $width:960px;
   background:url("../images/bg-page.png") no-repeat;
   width:$width;
@@ -255,6 +224,13 @@ $text-blue: #119bd8;
     width:$width - 532px;
 
   }
+}
+.page05,.page06,.page07,.page08{
+  background:none;
+  float:left;
+}
+.page05,.page06{
+  .page-body{ padding-top:134px; }
 }
 .logo-tuandai{
   background:url("../images/logo-tuandai.png") no-repeat;
@@ -384,56 +360,33 @@ $text-blue: #119bd8;
 
 .board-bid-current{
   background:url("../images/bg-board-bid-current.png") no-repeat;
-  width:423px;
-  height:150px;
-  padding:6px 1px 7px 6px;
-  .title{
-    width:417px;
-    color:#119BD8;
-    height:28px;
-    line-height:28px;
-    text-indent:10px;
-    @extend %textEllipsis;
+  width:400px;
+  height:155px;
+  padding:8px 8px 0 15px;
+  color:#FFF;
+  overflow:hidden;
 
-    span{ margin-right:20px; font-size:9px; }
-  }
-
-  .body{
-    height:84px;
-    color:#FFF;
-  }
   dl{
+    line-height:28px;
+    overflow:hidden;
+
     dd{
-      height:42px;
-      float:left;
-      line-height:42px;
-      font-size:9px;
-      text-indent:10px;
+      @extend %textEllipsis;
       overflow:hidden;
-      color:#FFF;
-
-      &:nth-of-type(1){ width:150px;}
-      &:nth-of-type(2){ width:122px;}
-      &:nth-of-type(3){ width:128px;}
-
-      span{ color:#FFD200; }
+      label{ color:#119BD8; }
       b{
-        font-size:12px;
-        font-weight:bold;
+        color:$text-yellow;
+        font-size:14px;
       }
     }
   }
 
-  .description{
-    width:417px;
-    padding:5px 0;
-    color:#FFF;
-    font-size:9px;
-    height:24px;
-    line-height:24px;
-    text-indent:10px;
-    @extend %textEllipsis;
-  }
+  .row-1{ height:28px;}
+  .row-2{ height:56px;}
+
+  .col-1,.col-2{ float:left;}
+  .col-1{ width:200px;}
+  .col-2{ width:400px;}
 }
 .board-bid-current-container{
   $width:423px;
@@ -473,7 +426,7 @@ $text-blue: #119bd8;
 }
 
 
-/* 消费金融 */
+/* 房贷 */
 .page02{
   .page-title{
     i{ background-position:-33px 0; }
@@ -567,6 +520,99 @@ $text-blue: #119bd8;
   }
 }
 
+/* P2P数据 */
+.page05{
+  .bulletin{
+    background:url("../images/bg-p2p-bulletin.png") no-repeat;
+    width:404px;
+    height:103px;
+    margin-top:12px;
+  }
+  .bulletin-wrap{
+    padding:25px 15px 0;
+    color:#FFF;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    font-size:18px;
+
+    b{
+      font-family:avantgardebold;
+      margin-right:5px;
+      vertical-align:baseline;
+
+      @include animateNums(40px, 30px, 20px);
+    }
+
+    & > span{
+      font-size:24px;
+      font-weight:bold;
+      vertical-align:middle;
+    }
+  }
+
+  .board-recently{
+    background:url("../images/bg-p2p-trade.png") no-repeat;
+    width:402px;
+    height:167px;
+    margin-top:12px;
+  }
+  .board-recently-body{
+    height:167px;
+    position:relative;
+    overflow:hidden;
+
+    li{
+      display:block;
+      background:url("../images/bg-board-scan-li01.png") no-repeat;
+      width:194px;
+      height:57px;
+      position:absolute;
+      opacity:0;
+
+      &:nth-of-type(1),&:nth-of-type(4){
+        top:18px;
+        left:14px;
+      }
+      &:nth-of-type(2),&:nth-of-type(5){
+        top:100px;
+        left:38px;
+      }
+      &:nth-of-type(3),&:nth-of-type(6){
+        top:47px;
+        left:201px;
+      }
+
+      .title{
+        font-size:8px;
+        color:#119BD8;
+        height:19px;
+        line-height:19px;
+        overflow:hidden;
+        text-indent:9px;
+
+        span{ float:right; padding-right:10px;}
+      }
+
+      .body{
+        font-size:12px;
+        color:#FFCC1C;
+        height:34px;
+        line-height:34px;
+        padding:2px 9px;
+        overflow:hidden;
+        span{ color:#FFF;}
+        b{ font-size:14px; color:#FFCC1C;}
+      }
+    }
+  }
+}
+
+.page06{
+  .page-body-l{
+    .board-title{ top:3px;}
+  }
+}
 
 /* 电商领域 */
 .page03{
