@@ -29,6 +29,7 @@
       <div class="page-body">
         <div class="page-body-l">
           <div class="board-title">服务覆盖范围</div>
+          <div id="carCover"></div>
         </div>
         <div class="page-body-r">
           <div class="board-title">行车轨迹</div>
@@ -116,6 +117,7 @@
       <div class="page-body">
         <div class="page-body-l">
           <div class="board-title">服务覆盖范围</div>
+          <div id="houseCover"></div>
         </div>
         <div class="page-body-r">
           <div class="board-title">融资</div>
@@ -287,6 +289,7 @@
     <div class="page05">
       <div class="page-body">
         <div class="page-body-l">
+          <div id="tradeArea"></div>
         </div>
         <div class="page-body-r">
           <div class="board-title">今日交易额</div>
@@ -388,6 +391,7 @@
       <div class="page-body">
         <div class="page-body-l">
           <div class="board-title">服务覆盖范围</div>
+          <div id="consumptionCover"></div>
         </div>
         <div class="page-body-r">
           <div class="board-title">融资</div>
@@ -650,16 +654,14 @@
             各月注册人数
             <div class="title-memo">单位：人</div>
           </div>
-          <div class="body">
-
-          </div>
+          <div id="regLine" class="body"></div>
         </div>
         <div class="board-02">
           <div class="title">
             各天交易金额
             <div class="title-memo">单位：万元</div>
           </div>
-          <div class="body"></div>
+          <div id="tradeMountLine" class="body"></div>
         </div>
         <div class="board-03">
           <div class="title">
@@ -740,7 +742,7 @@
         <div class="board-04"></div>
       </div>
     </section>
-    <section class="pop-risk">
+    <!--<section class="pop-risk">
       <div class="pop-risk-01">
         <div class="pop-risk-title"><i></i> 天秤系统</div>
         <div class="pop-risk-l">
@@ -819,7 +821,31 @@
           </div>
         </div>
       </div>
-      <div class="pop-risk-02"></div>
+      <div class="pop-risk-02">
+        <div class="pop-risk-title"><i></i> 云镜系统</div>
+        <div class="pop-risk-l">
+          <div class="board-risk02-01">
+            <div class="title">你我分区间分布</div>
+            <div class="body"></div>
+          </div>
+          <div class="board-risk02-02">
+            <div class="title">用户申请分布</div>
+            <div class="body"></div>
+          </div>
+        </div>
+        <div class="pop-risk-r">
+          <div class="board-title">功能模块</div>
+          <div class="mi-turntable">
+            <div class="mi-circle2"></div>
+            <div class="mi-circle1">
+              <div class="mi-1"><img src="images/mi1.png" alt=""></div>
+              <div class="mi-2"><img src="images/mi2.png" alt=""></div>
+              <div class="mi-3"><img src="images/mi3.png" alt=""></div>
+              <div class="mi-4"><img src="images/mi4.png" alt=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="pop-risk-03">
         <div class="pop-risk-l">
           <div class="board-title">功能模块</div>
@@ -852,11 +878,37 @@
           </div>
         </div>
         <div class="pop-risk-r">
+          <div class="board-risk03-01">
+            <div class="title">你我分区间分布</div>
+            <div class="body">
 
+            </div>
+          </div>
+          <div class="board-risk03-02">
+            <div class="title">用户模型效果分布</div>
+            <div class="body"></div>
+          </div>
         </div>
       </div>
-      <div class="pop-risk-04"></div>
-    </section>
+      <div class="pop-risk-04">
+        <div class="pop-risk-l">
+          <div class="board-risk04-01">
+            <div class="title">你我分模型结果</div>
+            <div class="body">
+
+            </div>
+          </div>
+          <div class="board-risk04-02">
+            <div class="title">你我分模型效果分布</div>
+            <div class="body"></div>
+          </div>
+        </div>
+        <div class="pop-risk-r">
+          <div class="board-title">应用价值与优势</div>
+          <div class="mirror-value"></div>
+        </div>
+      </div>
+    </section>-->
   </section>
   <div class="right-frame">
     <div class="page03">
@@ -1233,8 +1285,11 @@
 
 <!--调用js-->
 <script src="js/jquery-2.1.1.min.js"></script>
-<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="js/echarts2.0/echarts-2.0.js"></script>
+<script src="js/ecHelper-2.0.js"></script>
+<script src="js/chartHelper.js"></script>
 <script src="js/velocity.min.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
 <script src="js/unit.js"></script>
 <script src="js/main.js?v002"></script>
 <!--/调用js-->

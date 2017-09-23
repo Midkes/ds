@@ -299,9 +299,8 @@ $text-blue: #119bd8;
   }
 
   .page-body-l{
-    background:url("../images/bg-map-circle.png") no-repeat 58px 41px;
 
-    #serviceArea{
+    #carCover{
       height:410px;
     }
   }
@@ -440,7 +439,10 @@ $text-blue: #119bd8;
   }
 
   .page-body-l{
-    background:url("../images/bg-base-plate.png") no-repeat 33px 326px;
+
+    #houseCover{
+      height:410px;
+    }
 
     .base-light{
       background:url("../images/bg-base-light.png") no-repeat;
@@ -556,6 +558,11 @@ $text-blue: #119bd8;
       font-weight:bold;
       vertical-align:middle;
     }
+  }
+
+  #tradeArea{
+    margin-top:-20px;
+    height:441px;
   }
 
   .board-recently{
@@ -750,6 +757,10 @@ $text-blue: #119bd8;
 .page07{
   .page-title{
     i{ background-position:-132px 0; }
+  }
+
+  #consumptionCover{
+    height:441px;
   }
 }
 
@@ -1473,6 +1484,102 @@ $text-blue: #119bd8;
   }
 
 }
+.pop-risk-02{
+  .pop-risk-title{
+    top:148px;
+    left:494px;
+    color:#00c3ff;
+    font-size:16px;
+
+    i{ background-position:-171px -172px; }
+  }
+
+  .pop-risk-l{
+    padding-top:137px;
+  }
+
+  .board-risk02-01,.board-risk02-02{
+    background:url("../images/bg-board-cheat.png") no-repeat;
+    width:422px;
+    height:192px;
+    margin-bottom:20px;
+
+    .title{
+      height:31px;
+      line-height:38px;
+      color:$text-blue;
+      font-size:14px;
+      padding-left:25px;
+    }
+
+    .body{
+      height:156px;
+      position:relative;
+      overflow:hidden;
+    }
+  }
+
+  .pop-risk-r{
+    .board-title{
+      position:absolute;
+      top:208px;
+      left:8px;
+    }
+  }
+
+  .mi-turntable{
+    position:absolute;
+    width:353px;
+    height:353px;
+    top:170px;
+    left:44px;
+
+    .mi-circle1,.mi-circle2{
+      position:absolute;
+      width:353px;
+      height:353px;
+      background-position:center center;
+      background-repeat:no-repeat;
+      left:0;
+      top:0;
+    }
+    .mi-circle1{
+      background-image:url("../images/mirror-fun-circle01.png");
+      @include animation(rotateClockWise, 30s, linear);
+    }
+    .mi-circle2{
+      background-image:url("../images/mirror-fun-circle02.png");
+      @include animation(rotateClockWise, 10s, linear);
+    }
+
+    .mi-1,.mi-2,.mi-3,.mi-4{
+      width:140px;
+      height:140px;
+      position:absolute;
+      @include animation(rotateAntiClockWise, 30s, linear);
+    }
+    .mi-1{
+      right:0;
+      top:50%;
+      margin-top:-70px;
+    }
+    .mi-2{
+      top:0;
+      left:50%;
+      margin-left:-70px;
+    }
+    .mi-3{
+      left:0;
+      top:50%;
+      margin-top:-70px;
+    }
+    .mi-4{
+      bottom:0;
+      left:50%;
+      margin-left:-70px;
+    }
+  }
+}
 .pop-risk-03{
   .board-title{
     position:absolute;
@@ -1586,6 +1693,106 @@ $text-blue: #119bd8;
   .t2-content5{
     background:url("../images/t2-content5.png") no-repeat;
     height:209px;
+  }
+
+  .board-risk03-01{
+    background:url("../images/bg-board-05.png") no-repeat;
+    width:422px;
+    height:242px;
+    margin-top:35px;
+    margin-bottom:20px;
+
+    .title{
+      height:31px;
+      line-height:38px;
+      color:$text-blue;
+      font-size:14px;
+      padding-left:25px;
+    }
+    .body{
+      height:200px;
+      position:relative;
+      overflow:hidden;
+    }
+  }
+
+  .board-risk03-02{
+    background:url("../images/bg-board-06.png") no-repeat;
+    width:422px;
+    height:202px;
+
+    .title{
+      height:31px;
+      line-height:38px;
+      color:$text-blue;
+      font-size:14px;
+      padding-left:25px;
+    }
+
+    .body{
+      height:180px;
+      position:relative;
+      overflow:hidden;
+    }
+  }
+}
+.pop-risk-04{
+  .board-risk04-01{
+    background:url("../images/bg-board-05.png") no-repeat;
+    width:422px;
+    height:242px;
+    margin-top:35px;
+    margin-bottom:20px;
+
+    .title{
+      height:31px;
+      line-height:38px;
+      color:$text-blue;
+      font-size:14px;
+      padding-left:25px;
+    }
+    .body{
+      height:200px;
+      position:relative;
+      overflow:hidden;
+    }
+  }
+
+  .board-risk04-02{
+    background:url("../images/bg-board-06.png") no-repeat;
+    width:422px;
+    height:202px;
+
+    .title{
+      height:31px;
+      line-height:38px;
+      color:$text-blue;
+      font-size:14px;
+      padding-left:25px;
+    }
+
+    .body{
+      height:180px;
+      position:relative;
+      overflow:hidden;
+    }
+  }
+
+  .pop-risk-r{
+    .board-title{
+      position:absolute;
+      top:40px;
+      left:8px;
+    }
+  }
+
+  .mirror-value{
+    background:url("../images/mirror-value.png") no-repeat;
+    width:418px;
+    height:414px;
+    position:absolute;
+    top:67px;
+    left:8px;
   }
 }
 

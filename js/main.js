@@ -14,6 +14,13 @@ var t2_roll = {
 $(function(){
 
 
+  chartHelper.instances.m_carCover.init();
+  chartHelper.instances.m_houseCover.init();
+  chartHelper.instances.m_consumptionCover.init();
+  chartHelper.instances.m_tradeArea.init();
+  chartHelper.instances.m_regLine.init();
+  chartHelper.instances.m_tradeMountLine.init();
+
     /*chartHelper.instances.m_Map.init()
 
     chartHelper.instances.m_InvestmentLine.init()

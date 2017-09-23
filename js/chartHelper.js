@@ -415,208 +415,96 @@ chartHelper.getMakePointModel = function () {
     }
 };
 
-//主屏：地图
-chartHelper.instances.m_Map = {
+//主屏：车贷覆盖范围
+chartHelper.instances.m_carCover = {
     config: {
-        dom: document.getElementById('mainChina'),
-        type: ecHelper.type.map,
+        dom: document.getElementById('carCover'),
+        type: ecHelper.type.map
     },
 
     //option
     option: {
-        legend: {
-            x: 40,
-            y: 60,
-            data: [
-                { name: "实时注册", textStyle: { color: chartHelper.colorEnum.green }, icon: "image://../../Build/tuandai/v2/img/legendgreen.png" }, "",
-                { name: "实时投资", textStyle: { color: chartHelper.colorEnum.red }, icon: "image://../../Build/tuandai/v2/img/legendred.png" }, "",
-                { name: "实时充值", textStyle: { color: chartHelper.colorEnum.yellow }, icon: "image://../../Build/tuandai/v2/img/legendyellow.png" }, "",
-            ],
-            selectedMode: false,
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: '{b}'
-        },
-        dataRange: {
-            show: true,
-            min: 100,
-            max: 50000,
-            x: 40,
-            y: 'bottom',
-            text: ['>=5万', '100 '],
-            textStyle: {
-                color: '#FFF'
+      color: [
+        'rgba(255, 204, 28, 0.8)',
+        'rgba(14, 241, 242, 0.8)',
+        'rgba(37, 140, 249, 0.8)'
+      ],
+      legend: {
+        data:['强','中','弱'],
+        show: false
+      },
+      series : [
+        {
+          name: '弱',
+          type: 'map',
+          mapType: 'china',
+          itemStyle:{
+            normal:{
+              borderColor:'rgba(100,149,237,1)',
+              borderWidth:1.5,
+              areaStyle:{
+                color: '#1b1b1b'
+              }
             }
+          },
+          data : [],
+          markPoint : {
+            symbolSize: 4,
+            large: true,
+            effect : {
+              show: true,
+              shadowBlur: 0,
+              type: 'scale',
+              shadowColor: chartHelper.colorEnum.green,
+              shadowBlur: 5,
+              period: 8
+            },
+            data : [
+              {name: "南昌", value: 90, geoCoord: [115.89, 28.68]},
+              {name: "银川", value: 50, geoCoord: [106.27, 38.47]},
+              {name: "昆明", value: 75, geoCoord: [102.73, 25.04]}
+            ]
+          }
         },
-        series: [
-            {
-                name: '实时注册',
-                type: 'map',
-                mapType: 'china',
-                roam: false,
-                hoverable: false,
-                showLegendSymbol: false,
-                data: [],
-                itemStyle: {
-                    normal: {
-                        label: { show: true },
-                        borderColor: 'rgba(100,149,237,1)',
-                        borderWidth: 0.5,
-                        areaStyle: {
-                            color: ''
-                        }
-                    },
-                    emphasis: { label: { show: true } }
-                },
-                geoCoord: chartHelper.Areamap.getGeoCoord(),
-                markPoint: {
-                    symbol: 'emptyCircle',
-                    symbolSize: 10,
-                    effect: {
-                        show: true,
-                        shadowBlur: 0,
-                        type: 'scale',
-                        shadowColor: chartHelper.colorEnum.green,
-                        shadowBlur: 5,
-                        period: 8
-                    },
-                    itemStyle: {
-                        normal: {
-                            label: { show: false }
-                        },
-                        emphasis: {
-                            label: { position: null }
-                        },
-                        borderColor: "#ff7f50"
-                    },
-                    data: [
-                    { name: '上海', value: 1 },
-                    { name: '北京', value: 1 },
-                    { name: '广东', value: 1 },
-                    { name: '山西', value: 1 },
-                    ]
-                },
+        {
+          name: '中',
+          type: 'map',
+          mapType: 'china',
+          data : [],
+          markPoint : {
+            symbolSize: 3,
+            large: true,
+            effect : {
+              show: true
             },
-            {
-                name: '实时投资',
-                type: 'map',
-                mapType: 'china',
-                roam: false,
-                hoverable: false,
-                showLegendSymbol: false,
-                data: [],
-                itemStyle: {
-                    normal: {
-                        label: { show: true },
-                        borderColor: 'rgba(100,149,237,1)',
-                        borderWidth: 0.5,
-                        areaStyle: {
-                            color: ''
-                        }
-                    },
-                    emphasis: { label: { show: true } }
-                },
-                markLine: {//资金流标线
-                    smooth: true,
-                    effect: {
-                        show: true,
-                        scaleSize: 1,
-                        period: 30,
-                        color: 'red',
-                        shadowBlur: 10
-                    },
-                    itemStyle: {
-                        normal: {
-                            borderWidth: 1,
-                            lineStyle: {
-                                type: 'solid',
-                                shadowBlur: 10,
-                                color: 'red'
-                            },
-                            label: {
-                                show: false
-                            },
-                        }
-                    },
-                    data: [
-                        [{ name: '北京', smoothness: 0.4 }, { name: '广东', value: 95 }],
-                        [{ name: '湖南', smoothness: 0.4 }, { name: '河南', value: 10 }],
-                    ]
-                },
-                geoCoord: chartHelper.Areamap.getGeoCoord(),
-                markPoint: {
-                    symbol: 'emptyCircle',
-                    symbolSize: 10,
-                    effect: {
-                        show: true,
-                        shadowBlur: 0,
-                        type: 'scale',
-                        shadowColor: chartHelper.colorEnum.red,
-                        shadowBlur: 5,
-                        period: 8
-                    },
-                    itemStyle: {
-                        normal: {
-                            label: { show: false }
-                        },
-                        emphasis: {
-                            label: { position: null }
-                        },
-                        borderColor: "#ff7f50"
-                    },
-                    data: [
-                    { name: '广东', value: 1 },
-                    { name: '四川', value: 1 },
-                    ]
-                },
+            data : [
+              {name: "武汉", value: 10, geoCoord: [115.48859799759967, 31.629152502687425]},
+              {name: "长沙", value: 20, geoCoord: [111.27848911651458, 29.330699379172426]},
+              {name: "广州", value: 30, geoCoord: [113.90083168626032, 23.61910545040412]}
+            ]
+          }
+        },
+        {
+          name: '强',
+          type: 'map',
+          mapType: 'china',
+          hoverable: false,
+          data : [],
+          markPoint : {
+            symbol : 'diamond',
+            symbolSize: 6,
+            large: true,
+            effect : {
+              show: true
             },
-            {
-                name: '实时充值',
-                type: 'map',
-                mapType: 'china',
-                roam: false,
-                hoverable: false,
-                showLegendSymbol: false,
-                data: [],
-                itemStyle: {
-                    normal: {
-                        label: { show: true },
-                        borderColor: 'rgba(100,149,237,1)',
-                        borderWidth: 0.5,
-                        areaStyle: {
-                            color: ''
-                        }
-                    },
-                    emphasis: { label: { show: true } }
-                },
-                geoCoord: chartHelper.Areamap.getGeoCoord(),
-                markPoint: {
-                    symbol: 'emptyCircle',
-                    symbolSize: 10,
-                    effect: {
-                        show: true,
-                        shadowBlur: 0,
-                        type: 'scale',
-                        shadowColor: chartHelper.colorEnum.yellow,
-                        shadowBlur: 5,
-                        period: 8
-                    },
-                    itemStyle: {
-                        normal: {
-                            label: { show: false }
-                        },
-                        emphasis: {
-                            label: { position: null }
-                        },
-                        borderColor: "#ff7f50"
-                    },
-                    data: [
-                    { name: '四川', value: 1 },
-                    ]
-                },
-            },
-        ]
+            data : [
+              {name: "重庆", value: 10, geoCoord: [106.54, 29.59]},
+              {name: "北京", value: 30, geoCoord: [116.46, 39.92]},
+              {name: "宝鸡", value: 10, geoCoord: [107.15, 34.38]}
+            ]
+          }
+        }
+      ]
     },
 
     //初始化实例
@@ -625,60 +513,631 @@ chartHelper.instances.m_Map = {
     },
 
 
-    isSync: false,
-    //更新地图背景
-    updateMap: function (data) {
-        if (this.isSync) return;
-        this.isSync = true;
-
-        var maps = data.map(function (model) {
-            return { name: model.AreaName, value: model.Numbers };
-        });
-        this.option.series[0].data = maps;//绑定数据到第一个
-        //更新地图
-        this.init();
-    },
-    //更新冒泡、流向
-    updateBubbleFlow: function (model) {
-        //注册
-        var user = model.UserBubble;
-        if (user) {
-            var userMaps = user.map(function (province) {
-                return { name: province, value: 1 };
-            });
-            this.option.series[0].markPoint.data = userMaps;
-        }
-
-        //投资
-        var investment = model.InvestmentBubble;
-        if (investment) {
-            var investmentMaps = investment.map(function (province) {
-                return { name: province, value: 1 };
-            });
-            this.option.series[1].markPoint.data = investmentMaps;
-        }
-
-        //充值
-        var recharge = model.RechargeBubble;
-        if (recharge) {
-            var rechargeMaps = recharge.map(function (province) {
-                return { name: province, value: 1 };
-            });
-            this.option.series[2].markPoint.data = rechargeMaps;
-        }
-
-        //投资轨迹
-        var capitalFlows = model.CapitalFlows;
-        if (capitalFlows) {
-            var _capitalFlows = capitalFlows.map(function (item) {
-                return [{ name: item.OutProvince, smoothness: 0.4 }, { name: item.InProvince, value: 1 }];
-            });
-            this.option.series[1].markLine.data = _capitalFlows;
-        }
-
-        this.init();
-    }
+    isSync: false
 };
+
+//主屏：房贷覆盖范围
+chartHelper.instances.m_houseCover = {
+  config: {
+    dom: document.getElementById('houseCover'),
+    type: ecHelper.type.map
+  },
+
+  //option
+  option: {
+    color: [
+      'rgba(255, 204, 28, 0.8)',
+      'rgba(14, 241, 242, 0.8)',
+      'rgba(37, 140, 249, 0.8)'
+    ],
+    legend: {
+      data:['强','中','弱'],
+      show: false
+    },
+    series : [
+      {
+        name: '弱',
+        type: 'map',
+        mapType: 'china',
+        itemStyle:{
+          normal:{
+            borderColor:'rgba(100,149,237,1)',
+            borderWidth:1.5,
+            areaStyle:{
+              color: '#1b1b1b'
+            }
+          }
+        },
+        data : [],
+        markPoint : {
+          symbolSize: 4,
+          large: true,
+          effect : {
+            show: true
+          },
+          data : [
+            {name: "南昌", value: 90, geoCoord: [115.89, 28.68]},
+            {name: "银川", value: 50, geoCoord: [106.27, 38.47]},
+            {name: "昆明", value: 75, geoCoord: [102.73, 25.04]}
+          ]
+        }
+      },
+      {
+        name: '中',
+        type: 'map',
+        mapType: 'china',
+        data : [],
+        markPoint : {
+          symbolSize: 3,
+          large: true,
+          effect : {
+            show: true
+          },
+          data : [
+            {name: "武汉", value: 10, geoCoord: [115.48859799759967, 31.629152502687425]},
+            {name: "长沙", value: 20, geoCoord: [111.27848911651458, 29.330699379172426]},
+            {name: "广州", value: 30, geoCoord: [113.90083168626032, 23.61910545040412]}
+          ]
+        }
+      },
+      {
+        name: '强',
+        type: 'map',
+        mapType: 'china',
+        hoverable: false,
+        data : [],
+        markPoint : {
+          symbol : 'diamond',
+          symbolSize: 6,
+          large: true,
+          effect : {
+            show: true
+          },
+          data : [
+            {name: "重庆", value: 10, geoCoord: [106.54, 29.59]},
+            {name: "北京", value: 30, geoCoord: [116.46, 39.92]},
+            {name: "宝鸡", value: 10, geoCoord: [107.15, 34.38]}
+          ]
+        }
+      }
+    ]
+  },
+
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+
+
+  isSync: false
+};
+
+//主屏：网贷主屏交易
+chartHelper.instances.m_tradeArea = {
+  config: {
+    dom: document.getElementById('tradeArea'),
+    type: ecHelper.type.map
+  },
+
+  //option
+  option: {
+    color: ['gold','aqua','lime'],
+    series : [
+      {
+        name: '全国',
+        type: 'map',
+        hoverable: false,
+        mapType: 'china',
+        itemStyle:{
+          normal:{
+            borderColor:'rgba(100,149,237,1)',
+            borderWidth:0.5,
+            areaStyle:{
+              color: '#1b1b1b'
+            }
+          }
+        },
+        data:[],
+        geoCoord: {
+          '上海': [121.4648,31.2891],
+          '东莞': [113.8953,22.901],
+          '东营': [118.7073,37.5513],
+          '中山': [113.4229,22.478],
+          '临汾': [111.4783,36.1615],
+          '临沂': [118.3118,35.2936],
+          '丹东': [124.541,40.4242],
+          '丽水': [119.5642,28.1854],
+          '乌鲁木齐': [87.9236,43.5883],
+          '佛山': [112.8955,23.1097],
+          '保定': [115.0488,39.0948],
+          '兰州': [103.5901,36.3043],
+          '包头': [110.3467,41.4899],
+          '北京': [116.4551,40.2539],
+          '北海': [109.314,21.6211],
+          '南京': [118.8062,31.9208],
+          '南宁': [108.479,23.1152],
+          '南昌': [116.0046,28.6633],
+          '南通': [121.1023,32.1625],
+          '厦门': [118.1689,24.6478],
+          '台州': [121.1353,28.6688],
+          '合肥': [117.29,32.0581],
+          '呼和浩特': [111.4124,40.4901],
+          '咸阳': [108.4131,34.8706],
+          '哈尔滨': [127.9688,45.368],
+          '唐山': [118.4766,39.6826],
+          '嘉兴': [120.9155,30.6354],
+          '大同': [113.7854,39.8035],
+          '大连': [122.2229,39.4409],
+          '天津': [117.4219,39.4189],
+          '太原': [112.3352,37.9413],
+          '威海': [121.9482,37.1393],
+          '宁波': [121.5967,29.6466],
+          '宝鸡': [107.1826,34.3433],
+          '宿迁': [118.5535,33.7775],
+          '常州': [119.4543,31.5582],
+          '广州': [113.5107,23.2196],
+          '廊坊': [116.521,39.0509],
+          '延安': [109.1052,36.4252],
+          '张家口': [115.1477,40.8527],
+          '徐州': [117.5208,34.3268],
+          '德州': [116.6858,37.2107],
+          '惠州': [114.6204,23.1647],
+          '成都': [103.9526,30.7617],
+          '扬州': [119.4653,32.8162],
+          '承德': [117.5757,41.4075],
+          '拉萨': [91.1865,30.1465],
+          '无锡': [120.3442,31.5527],
+          '日照': [119.2786,35.5023],
+          '昆明': [102.9199,25.4663],
+          '杭州': [119.5313,29.8773],
+          '枣庄': [117.323,34.8926],
+          '柳州': [109.3799,24.9774],
+          '株洲': [113.5327,27.0319],
+          '武汉': [114.3896,30.6628],
+          '汕头': [117.1692,23.3405],
+          '江门': [112.6318,22.1484],
+          '沈阳': [123.1238,42.1216],
+          '沧州': [116.8286,38.2104],
+          '河源': [114.917,23.9722],
+          '泉州': [118.3228,25.1147],
+          '泰安': [117.0264,36.0516],
+          '泰州': [120.0586,32.5525],
+          '济南': [117.1582,36.8701],
+          '济宁': [116.8286,35.3375],
+          '海口': [110.3893,19.8516],
+          '淄博': [118.0371,36.6064],
+          '淮安': [118.927,33.4039],
+          '深圳': [114.5435,22.5439],
+          '清远': [112.9175,24.3292],
+          '温州': [120.498,27.8119],
+          '渭南': [109.7864,35.0299],
+          '湖州': [119.8608,30.7782],
+          '湘潭': [112.5439,27.7075],
+          '滨州': [117.8174,37.4963],
+          '潍坊': [119.0918,36.524],
+          '烟台': [120.7397,37.5128],
+          '玉溪': [101.9312,23.8898],
+          '珠海': [113.7305,22.1155],
+          '盐城': [120.2234,33.5577],
+          '盘锦': [121.9482,41.0449],
+          '石家庄': [114.4995,38.1006],
+          '福州': [119.4543,25.9222],
+          '秦皇岛': [119.2126,40.0232],
+          '绍兴': [120.564,29.7565],
+          '聊城': [115.9167,36.4032],
+          '肇庆': [112.1265,23.5822],
+          '舟山': [122.2559,30.2234],
+          '苏州': [120.6519,31.3989],
+          '莱芜': [117.6526,36.2714],
+          '菏泽': [115.6201,35.2057],
+          '营口': [122.4316,40.4297],
+          '葫芦岛': [120.1575,40.578],
+          '衡水': [115.8838,37.7161],
+          '衢州': [118.6853,28.8666],
+          '西宁': [101.4038,36.8207],
+          '西安': [109.1162,34.2004],
+          '贵阳': [106.6992,26.7682],
+          '连云港': [119.1248,34.552],
+          '邢台': [114.8071,37.2821],
+          '邯郸': [114.4775,36.535],
+          '郑州': [113.4668,34.6234],
+          '鄂尔多斯': [108.9734,39.2487],
+          '重庆': [107.7539,30.1904],
+          '金华': [120.0037,29.1028],
+          '铜川': [109.0393,35.1947],
+          '银川': [106.3586,38.1775],
+          '镇江': [119.4763,31.9702],
+          '长春': [125.8154,44.2584],
+          '长沙': [113.0823,28.2568],
+          '长治': [112.8625,36.4746],
+          '阳泉': [113.4778,38.0951],
+          '青岛': [120.4651,36.3373],
+          '韶关': [113.7964,24.7028]
+        }
+      },
+      {
+        name: '北京 Top10',
+        type: 'map',
+        mapType: 'china',
+        data:[],
+        markPoint : {
+          symbol:'emptyCircle',
+          symbolSize : 6,
+          effect : {
+            show: true,
+            shadowBlur : 0
+          },
+          itemStyle:{
+            normal:{
+              label:{show:false}
+            },
+            emphasis: {
+              label:{position:'top'}
+            }
+          },
+          data : [
+            {name:'上海',value:95},
+            {name:'广州',value:90},
+            {name:'大连',value:80}
+          ]
+        }
+      },
+      {
+        name: '上海 Top10',
+        type: 'map',
+        mapType: 'china',
+        data:[],
+        markPoint : {
+          symbol:'emptyCircle',
+          symbolSize : 5,
+          effect : {
+            show: true,
+            shadowBlur : 0
+          },
+          itemStyle:{
+            normal:{
+              label:{show:false}
+            },
+            emphasis: {
+              label:{position:'top'}
+            }
+          },
+          data : [
+            {name:'长春',value:60},
+            {name:'重庆',value:50},
+            {name:'长沙',value:40},
+            {name:'北京',value:30},
+            {name:'丹东',value:20},
+            {name:'大连',value:10}
+          ]
+        }
+      },
+      {
+        name: '广州 Top10',
+        type: 'map',
+        mapType: 'china',
+        data:[],
+        markPoint : {
+          symbol:'emptyCircle',
+          symbolSize : 8,
+          effect : {
+            show: true,
+            shadowBlur : 0
+          },
+          itemStyle:{
+            normal:{
+              label:{show:false}
+            },
+            emphasis: {
+              label:{position:'top'}
+            }
+          },
+          data : [
+            {name:'成都',value:50},
+            {name:'常州',value:40},
+            {name:'北京',value:30},
+            {name:'北海',value:20},
+            {name:'海口',value:10}
+          ]
+        }
+      }
+    ]
+  },
+
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+
+
+  isSync: false
+};
+
+//主屏：消费拿下覆盖范围
+chartHelper.instances.m_consumptionCover = {
+  config: {
+    dom: document.getElementById('consumptionCover'),
+    type: ecHelper.type.map
+  },
+
+  //option
+  option: {
+    color: [
+      'rgba(255, 204, 28, 0.8)',
+      'rgba(14, 241, 242, 0.8)',
+      'rgba(37, 140, 249, 0.8)'
+    ],
+    legend: {
+      data:['强','中','弱'],
+      show: false
+    },
+    series : [
+      {
+        name: '弱',
+        type: 'map',
+        mapType: 'china',
+        itemStyle:{
+          normal:{
+            borderColor:'rgba(100,149,237,1)',
+            borderWidth:1.5,
+            areaStyle:{
+              color: '#1b1b1b'
+            }
+          }
+        },
+        data : [],
+        markPoint : {
+          symbolSize: 4,
+          large: true,
+          effect : {
+            show: true
+          },
+          data : [
+            {name: "南昌", value: 90, geoCoord: [115.89, 28.68]},
+            {name: "银川", value: 50, geoCoord: [106.27, 38.47]},
+            {name: "昆明", value: 75, geoCoord: [102.73, 25.04]}
+          ]
+        }
+      },
+      {
+        name: '中',
+        type: 'map',
+        mapType: 'china',
+        data : [],
+        markPoint : {
+          symbolSize: 3,
+          large: true,
+          effect : {
+            show: true
+          },
+          data : [
+            {name: "武汉", value: 10, geoCoord: [115.48859799759967, 31.629152502687425]},
+            {name: "长沙", value: 20, geoCoord: [111.27848911651458, 29.330699379172426]},
+            {name: "广州", value: 30, geoCoord: [113.90083168626032, 23.61910545040412]}
+          ]
+        }
+      },
+      {
+        name: '强',
+        type: 'map',
+        mapType: 'china',
+        hoverable: false,
+        data : [],
+        markPoint : {
+          symbol : 'diamond',
+          symbolSize: 6,
+          large: true,
+          effect : {
+            show: true
+          },
+          data : [
+            {name: "重庆", value: 10, geoCoord: [106.54, 29.59]},
+            {name: "北京", value: 30, geoCoord: [116.46, 39.92]},
+            {name: "宝鸡", value: 10, geoCoord: [107.15, 34.38]}
+          ]
+        }
+      }
+    ]
+  },
+
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+
+
+  isSync: false
+};
+
+//主屏：注册人数趋势线
+chartHelper.instances.m_regLine = {
+  config: {
+    dom: document.getElementById('regLine'),
+    type: ecHelper.type.line
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+
+  //option
+  option: {
+    calculable: true,
+    textStyle: {
+      color: '#FFF'
+    },
+    grid: {
+      x:40,
+      y:15,
+      x2:30,
+      y2:35,
+      borderColor: 'rgba(0,0,0,0)',
+      borderWidth: 0,
+      backgroundColor: 'rgba(0,0,0,0)'
+    },
+    xAxis: [
+      {
+        splitLine: {
+          show: false
+        },
+        type: 'category',
+        boundaryGap: false,
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        data: ['2016-09','2016-10','2016-11','2016-12','2017-01','2017-02']
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        splitLine: {
+          show: false
+        },
+        axisLine:{
+          lineStyle:{
+            color: '#205492',
+            width: 1
+          }
+        },
+        axisLabel: {
+          textStyle: {
+            color: '#FFF'
+          }
+        }
+      }
+    ],
+    series: [
+      {
+        itemStyle: {
+          normal: {
+            lineStyle: {
+              color: '#58aef3'
+            },
+            color: '#FECB00'
+          }
+        },
+        type: 'line',
+        data: [33, 34, 41, 60, 49, 20]
+      }
+    ]
+  },
+  //更新数据
+  update: function (data) {
+    var names = [];
+    var amountsTrend = [];
+    var numbersTrend = [];
+    data.forEach(function (model) {
+      names.push(model.Month);
+      amountsTrend.push(model.Amount);
+      numbersTrend.push(model.Numbers);
+    });
+    this.option.xAxis[0].data = names;
+    this.option.series[0].data = amountsTrend;
+    this.option.series[1].data = numbersTrend;
+
+    this.init();
+  }
+};
+
+//主屏：每天交易趋势线
+chartHelper.instances.m_tradeMountLine = {
+  config: {
+    dom: document.getElementById('tradeMountLine'),
+    type: ecHelper.type.line
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+
+  //option
+  option: {
+    calculable: true,
+    textStyle: {
+      color: '#FFF'
+    },
+    grid: {
+      x:40,
+      y:15,
+      x2:30,
+      y2:35,
+      borderColor: 'rgba(0,0,0,0)',
+      borderWidth: 0,
+      backgroundColor: 'rgba(0,0,0,0)'
+    },
+    xAxis: [
+      {
+        splitLine: {
+          show: false
+        },
+        type: 'category',
+        boundaryGap: false,
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        data: ['2016-09','2016-10','2016-11','2016-12','2017-01','2017-02']
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        splitLine: {
+          show: false
+        },
+        axisLine:{
+          lineStyle:{
+            color: '#205492',
+            width: 1
+          }
+        },
+        axisLabel: {
+          textStyle: {
+            color: '#FFF'
+          }
+        }
+      }
+    ],
+    series: [
+      {
+        itemStyle: {
+          normal: {
+            lineStyle: {
+              color: '#58aef3'
+            },
+            color: '#FECB00'
+          }
+        },
+        type: 'line',
+        data: [33, 34, 41, 60, 49, 20]
+      }
+    ]
+  },
+  //更新数据
+  update: function (data) {
+    var names = [];
+    var amountsTrend = [];
+    var numbersTrend = [];
+    data.forEach(function (model) {
+      names.push(model.Month);
+      amountsTrend.push(model.Amount);
+      numbersTrend.push(model.Numbers);
+    });
+    this.option.xAxis[0].data = names;
+    this.option.series[0].data = amountsTrend;
+    this.option.series[1].data = numbersTrend;
+
+    this.init();
+  }
+};
+
+
 //主屏：交易趋势线
 chartHelper.instances.m_InvestmentLine = {
     config: {
