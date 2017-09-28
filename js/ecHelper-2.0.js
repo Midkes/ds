@@ -23,7 +23,7 @@ ecHelper.type = {
 	pie: [
             'echarts',
             'echarts/chart/pie'
-	],
+	]
 };
 
 //初始化echart实例
@@ -35,6 +35,6 @@ ecHelper.init = function (dom, type, option) {
         	chart.setOption(option);
         }
     );
-}
+};
 
 

@@ -49,7 +49,9 @@
               </dl>
               <p>2017-04-18</p>
             </div>
-            <div class="side-r"></div>
+            <div class="side-r">
+              <div id="trackCarThumb"></div>
+            </div>
           </div>
           <div class="board-title">融资</div>
           <div class="board-financing">
@@ -95,7 +97,24 @@
               </div>
             </div>
           </div>
-
+        </div>
+      </div>
+      <div class="board-track-pop">
+        <div class="title">
+          <ul>
+            <li>
+              <i class="i-track1"></i> <span>姓名：</span>车**
+            </li>
+            <li>
+              <i class="i-track2"></i> <span>车牌：</span>京A4588**
+            </li>
+            <li>
+              <i class="i-track3"></i> <span>行驶时间：</span>2017-04-18
+            </li>
+          </ul>
+        </div>
+        <div class="body">
+          <div id="trackCar"></div>
         </div>
       </div>
     </div>
@@ -335,7 +354,7 @@
     <div class="page06">
       <div class="page-body">
         <div class="page-body-l">
-          <div class="board-title">BI智能引擎</div>
+          <a href="javascript:showBI()" class="board-title">BI智能引擎</a>
           <div class="bi-turntable">
             <div class="bi-circle3"></div>
             <div class="bi-circle2"></div>
@@ -349,7 +368,7 @@
           </div>
         </div>
         <div class="page-body-r">
-          <div class="board-title">大数据风控系统</div>
+          <a href="javascript:showRisk()" class="board-title">大数据风控系统</a>
           <div class="track1">
             <div class="track1-1">
               <div class="t1-1">
@@ -668,14 +687,17 @@
             各标交易额占比
             <div class="title-memo">单位：万元</div>
           </div>
-          <div class="body"></div>
+          <div class="body">
+            <div class="rose-circle"></div>
+            <div id="tradeBidRate"></div>
+          </div>
         </div>
         <div class="board-04">
           <div class="title">
             各月交易趋势
-            <div class="title-memo">交易金额（亿）交易人数（人）</div>
+            <div class="title-memo"><i class="i-legend-yellow"></i>交易金额（亿） <i class="i-legend-blue"></i>交易人数（人）</div>
           </div>
-          <div class="body"></div>
+          <div id="tradeMonthLine" class="body"></div>
         </div>
       </div>
       <div class="pop-bi-02">
@@ -736,13 +758,21 @@
         <div class="board-title">年龄</div>
         <div class="board-title">忠诚度</div>
         <div class="board-title">活跃度</div>
-        <div class="board-01"></div>
-        <div class="board-02"></div>
-        <div class="board-03"></div>
-        <div class="board-04"></div>
+        <div class="board-01">
+          <div id="lifeCycleChart"></div>
+        </div>
+        <div class="board-02">
+          <div id="ageChart"></div>
+        </div>
+        <div class="board-03">
+          <div id="loyaltyRate"></div>
+        </div>
+        <div class="board-04">
+          <div id="livelyRate"></div>
+        </div>
       </div>
     </section>
-    <!--<section class="pop-risk">
+    <section class="pop-risk">
       <div class="pop-risk-01">
         <div class="pop-risk-title"><i></i> 天秤系统</div>
         <div class="pop-risk-l">
@@ -778,9 +808,10 @@
           <div class="board-cheat">
             <div class="board-cheat-title">
               反欺诈识别结果
+              <div class="title-memo"><i class="i-legend-blue"></i>通过 <i class="i-legend-yellow"></i>拒绝</div>
             </div>
             <div class="board-cheat-body">
-
+              <div id="cheatResultBar"></div>
             </div>
           </div>
           <div class="board-cheat">
@@ -826,11 +857,16 @@
         <div class="pop-risk-l">
           <div class="board-risk02-01">
             <div class="title">你我分区间分布</div>
-            <div class="body"></div>
+            <div class="body">
+              <div class="rose-circle"></div>
+              <div id="nwAreaRate"></div>
+            </div>
           </div>
           <div class="board-risk02-02">
             <div class="title">用户申请分布</div>
-            <div class="body"></div>
+            <div class="body">
+              <div id="userApplyShow"></div>
+            </div>
           </div>
         </div>
         <div class="pop-risk-r">
@@ -879,28 +915,43 @@
         </div>
         <div class="pop-risk-r">
           <div class="board-risk03-01">
-            <div class="title">你我分区间分布</div>
+            <div class="title">用户模型区间分布</div>
             <div class="body">
-
+              <div class="rose-circle"></div>
+              <div id="userModelArea">
+              </div>
+              <div class="time-line">
+                <a href="javascript:">2017-01</a>
+                <a href="javascript:">2017-02</a>
+                <a class="active" href="javascript:">2017-03</a>
+                <a href="javascript:">2017-04</a>
+                <a href="javascript:">2017-05</a>
+              </div>
             </div>
           </div>
           <div class="board-risk03-02">
             <div class="title">用户模型效果分布</div>
-            <div class="body"></div>
+            <div class="body">
+              <div id="userModelBar"></div>
+            </div>
           </div>
         </div>
       </div>
       <div class="pop-risk-04">
         <div class="pop-risk-l">
           <div class="board-risk04-01">
-            <div class="title">你我分模型结果</div>
+            <div class="title">你我分模型结果
+              <div class="title-memo"><i class="i-legend-blue"></i>通过 <i class="i-legend-yellow"></i>拒绝</div>
+            </div>
             <div class="body">
-
+              <div id="nwResultBar"></div>
             </div>
           </div>
           <div class="board-risk04-02">
             <div class="title">你我分模型效果分布</div>
-            <div class="body"></div>
+            <div class="body">
+              <div id="nwModelBar"></div>
+            </div>
           </div>
         </div>
         <div class="pop-risk-r">
@@ -908,7 +959,7 @@
           <div class="mirror-value"></div>
         </div>
       </div>
-    </section>-->
+    </section>
   </section>
   <div class="right-frame">
     <div class="page03">
@@ -1285,10 +1336,14 @@
 
 <!--调用js-->
 <script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/velocity.min.js"></script>
+
+<!--<script src="js/echarts.min.js"></script>-->
+<script src="js/echarts.min.js"></script>
 <script src="js/echarts2.0/echarts-2.0.js"></script>
 <script src="js/ecHelper-2.0.js"></script>
 <script src="js/chartHelper.js"></script>
-<script src="js/velocity.min.js"></script>
+<script src="js/china.js"></script>
 <script src="js/jquery.SuperSlide.2.1.1.js"></script>
 <script src="js/unit.js"></script>
 <script src="js/main.js?v002"></script>

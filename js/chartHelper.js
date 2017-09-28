@@ -1043,7 +1043,7 @@ chartHelper.instances.m_regLine = {
   }
 };
 
-//主屏：每天交易趋势线
+//BI：每天交易趋势线
 chartHelper.instances.m_tradeMountLine = {
   config: {
     dom: document.getElementById('tradeMountLine'),
@@ -1137,131 +1137,129 @@ chartHelper.instances.m_tradeMountLine = {
   }
 };
 
+//BI：各月交易趋势线
+chartHelper.instances.m_tradeMonthLine = {
+  config: {
+    dom: document.getElementById('tradeMonthLine'),
+    type: ecHelper.type.line,
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
 
-//主屏：交易趋势线
-chartHelper.instances.m_InvestmentLine = {
-    config: {
-        dom: document.getElementById('boardTradeLine'),
-        type: ecHelper.type.line,
+  //option
+  option: {
+    calculable: true,
+    textStyle: {
+      color: '#FFF'
     },
-    //初始化实例
-    init: function () {
-        ecHelper.init(this.config.dom, this.config.type, this.option);
+    grid: {
+      x:40,
+      y:15,
+      x2:35,
+      y2:35,
+      borderColor: 'rgba(0,0,0,0)',
+      borderWidth: 0,
+      backgroundColor: 'rgba(0,0,0,0)'
     },
-
-    //option
-    option: {
-        calculable: true,
-        textStyle: {
+    xAxis: [
+      {
+        splitLine: {
+          show: false
+        },
+        type: 'category',
+        boundaryGap: false,
+        axisLabel: {
+          interval: 0,
+          textStyle: {
             color: '#FFF'
+          }
         },
-        grid: {
-            x:30,
-            y:10,
-            x2:30,
-            y2:20,
-            borderColor: 'rgba(0,0,0,0)',
-            borderWidth: 0,
-            backgroundColor: 'rgba(0,0,0,0)',
-            //x: '100%',
-            //y: '100%',
+        data: ['2016-09','2016-10','2016-11','2016-12','2017-01','2017-02']
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        splitLine: {
+          show: false
         },
-        xAxis: [
-            {
-                splitLine: {
-                    show: false
-                },
-                type: 'category',
-                boundaryGap: false,
-                axisLabel: {
-                    interval: 0,
-                    textStyle: {
-                        color: '#FFF'
-                    }
-                },
-                data: ['2016-09','2016-10','2016-11','2016-12','2017-01','2017-02']
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                splitLine: {
-                    show: false
-                },
-                axisLine:{
-                    lineStyle:{
-                        color: '#205492',
-                        width: 1
-                    }
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#FFF'
-                    }
-                }
-            },{
-                type: 'value',
-                splitLine: {
-                    show: false
-                },
-                axisLine:{
-                    lineStyle:{
-                        color: '#205492',
-                        width: 1
-                    }
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#FFF'
-                    }
-                }
+        axisLine:{
+          lineStyle:{
+            color: '#205492',
+            width: 1
+          }
+        },
+        axisLabel: {
+          textStyle: {
+            color: '#FFF'
+          }
+        }
+      },{
+        type: 'value',
+        splitLine: {
+          show: false
+        },
+        axisLine:{
+          lineStyle:{
+            color: '#205492',
+            width: 1
+          }
+        },
+        axisLabel: {
+          textStyle: {
+            color: '#FFF'
+          }
+        }
 
-            }
-        ],
-        series: [
-            {
-                itemStyle: {
-                    normal: {
-                        color: '#FECB33'
-                    }
-                },
-                type: 'line',
-                data: [33, 34, 41, 60, 49, 20]
-            },
-            {
-                itemStyle: {
-                    normal: {
-                        color: '#35A3FA'
-                    }
-                },
-                type: 'line',
-                data: [91, 14, 5, 18, 62, 11],
-                yAxisIndex: 1
-            }
-        ]
-    },
-    //更新数据
-    update: function (data) {
-        var names = [];
-        var amountsTrend = [];
-        var numbersTrend = [];
-        data.forEach(function (model) {
-            names.push(model.Month);
-            amountsTrend.push(model.Amount);
-            numbersTrend.push(model.Numbers);
-        });
-        this.option.xAxis[0].data = names;
-        this.option.series[0].data = amountsTrend;
-        this.option.series[1].data = numbersTrend;
+      }
+    ],
+    series: [
+      {
+        itemStyle: {
+          normal: {
+            color: '#FECB33'
+          }
+        },
+        type: 'line',
+        data: [33, 34, 41, 60, 49, 20]
+      },
+      {
+        itemStyle: {
+          normal: {
+            color: '#35A3FA'
+          }
+        },
+        type: 'line',
+        data: [91, 14, 5, 18, 62, 11],
+        yAxisIndex: 1
+      }
+    ]
+  },
+  //更新数据
+  update: function (data) {
+    var names = [];
+    var amountsTrend = [];
+    var numbersTrend = [];
+    data.forEach(function (model) {
+      names.push(model.Month);
+      amountsTrend.push(model.Amount);
+      numbersTrend.push(model.Numbers);
+    });
+    this.option.xAxis[0].data = names;
+    this.option.series[0].data = amountsTrend;
+    this.option.series[1].data = numbersTrend;
 
-        this.init();
-    }
+    this.init();
+  }
 };
-//主屏：标分布饼图
-chartHelper.instances.m_ProjectPie = {
+
+//BI：各标交易额占比
+chartHelper.instances.m_tradeBidRate = {
     config: {
-        dom: document.getElementById('boardBidRate'),
-        type: ecHelper.type.pie,
+        dom: document.getElementById('tradeBidRate'),
+        type: ecHelper.type.pie
     },
     //初始化实例
     init: function () {
@@ -1280,7 +1278,7 @@ chartHelper.instances.m_ProjectPie = {
             {
                 name: '面积模式',
                 type: 'pie',
-                radius: [23, 73],
+                radius: [23, 68],
                 center: ['50%', '49.5%'],
                 roseType: 'area',
                 itemStyle: {
@@ -1314,11 +1312,297 @@ chartHelper.instances.m_ProjectPie = {
     }
 
 };
-//主屏：反欺诈条形图
-chartHelper.instances.m_AntiFraudBar = {
+
+//BI：生命周期
+chartHelper.instances.m_lifeCycleChart = {
+  config: {
+    dom: document.getElementById('lifeCycleChart'),
+    type: ecHelper.type.bar
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option:  {
+    tooltip : {
+      trigger: 'axis',
+      axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      },
+      formatter: function (params) {
+        var tar = params[0];
+        return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+      }
+    },
+    grid: {
+      x:50,
+      y:15,
+      x2:25,
+      y2:35,
+      borderWidth: 0
+    },
+    xAxis : [
+      {
+        type : 'category',
+        splitLine: {show:false},
+        data : ['导入','成长','平稳','衰退','流失'],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        }
+      }
+    ],
+    yAxis : [
+      {
+        type : 'value',
+        splitLine: {show:false},
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        }
+      }
+    ],
+    series : [
+      {
+        name:'辅助',
+        type:'bar',
+        stack: '总量',
+        itemStyle:{
+          normal:{
+            barBorderColor:'rgba(0,0,0,0)',
+            color:'rgba(0,0,0,0)'
+          },
+          emphasis:{
+            barBorderColor:'rgba(0,0,0,0)',
+            color:'rgba(0,0,0,0)'
+          }
+        },
+        data:[0, 1700, 1400, 1200, 300]
+      },
+      {
+        name:'生命周期',
+        type:'bar',
+        stack: '总量',
+        itemStyle: {
+          normal: {
+            label: {show: true, position: 'inside'},
+            color:'#35A3FA'
+          }
+        },
+        data:[2900, 1200, 300, 200, 900]
+      }
+    ]
+  }
+
+};
+
+chartHelper.instances.m_ageChart = {
+  config: {
+    dom: document.getElementById('ageChart'),
+    type: ecHelper.type.bar
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option:   {
+    calculable : true,
+    grid: {
+      x:50,
+      y:15,
+      x2:25,
+      y2:35,
+      borderWidth: 0
+    },
+    xAxis : [
+      {
+        type : 'value',
+        boundaryGap : [0, 0.01],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    yAxis : [
+      {
+        type : 'category',
+        data : ['≤25','25-30','30-35','35-40','40-45','45-50'],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    series : [
+      {
+        name:'2011年',
+        type:'bar',
+        barCategoryGap: 10,
+        data:[18203, 23489, 29034, 104970, 131744, 630230],
+        itemStyle: {
+          normal: {
+            color:'#35A3FA',
+            barBorderRadius: [0, 5, 5, 0]
+          }
+        }
+      }
+    ]
+  }
+
+};
+
+//BI：忠诚度占比
+chartHelper.instances.m_loyaltyRate = {
+  config: {
+    dom: document.getElementById('loyaltyRate'),
+    type: ecHelper.type.pie
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option: {
+    legend: {
+      x: 'center',
+      y: 'bottom',
+      //data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+      data: []
+    },
+    //calculable: true,
+    series: [
+      {
+        name: '面积模式',
+        type: 'pie',
+        radius: [23, 68],
+        center: ['50.3%', '51%'],
+        roseType: 'area',
+        itemStyle: {
+          normal: {
+            label: {
+              normal: {
+                formatter: '{a}{b}%'
+              }
+            }
+          }
+        },
+        x: '50%',
+        max: 40,
+        sort: 'ascending',
+        data: [
+          { value: 10, name: '数据1' },
+          { value: 5, name: '数据2' },
+          { value: 15, name: '数据3' },
+          { value: 15, name: '数据4' },
+          { value: 15, name: '数据5' },
+          { value: 25, name: '数据6' }
+        ]
+      }
+    ]
+  },
+  //更新图表
+  update: function (data) {
+    var maps = data.map(function (model) {
+      return { name: model.Description, value: model.Amount };
+    });
+    this.option.series[0].data = maps;
+    this.init();
+  }
+
+};
+
+//BI：活跃度占比
+chartHelper.instances.m_livelyRate = {
+  config: {
+    dom: document.getElementById('livelyRate'),
+    type: ecHelper.type.pie
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option: {
+    calculable : false,
+    series : [
+      {
+        name:'访问来源',
+        type:'pie',
+        selectedMode: 'single',
+        radius : [0, 40],
+
+        // for funnel
+        x: '20%',
+        width: '40%',
+        funnelAlign: 'right',
+        max: 1548,
+
+        itemStyle : {
+          normal : {
+            label : {
+              show: false
+            },
+            labelLine : {
+              show : false
+            }
+          }
+        },
+        data:[
+          {value:335, name:'直达'},
+          {value:679, name:'营销广告'},
+          {value:1548, name:'搜索引擎'}
+        ]
+      },
+      {
+        name:'访问来源',
+        type:'pie',
+        radius : [50, 72],
+
+        // for funnel
+        x: '60%',
+        width: '35%',
+        funnelAlign: 'left',
+        max: 1048,
+
+        data:[
+          {value:335, name:'直达'},
+          {value:310, name:'邮件营销'},
+          {value:234, name:'联盟广告'},
+          {value:135, name:'视频广告'},
+          {value:1048, name:'百度'},
+          {value:251, name:'谷歌'},
+          {value:147, name:'必应'},
+          {value:102, name:'其他'}
+        ]
+      }
+    ]
+  }
+
+};
+
+
+//风控：反欺诈识别结果
+chartHelper.instances.m_cheatResultBar = {
     config: {
-        dom: document.getElementById('boardCheatResult'),
-        type: ecHelper.type.bar,
+        dom: document.getElementById('cheatResultBar'),
+        type: ecHelper.type.bar
     },
     //初始化实例
     init: function () {
@@ -1431,10 +1715,432 @@ chartHelper.instances.m_AntiFraudBar = {
         this.init();
     }
 };
-//主屏：反欺诈饼图
-chartHelper.instances.m_AntiFraudPie = {
+
+//风控：你我分区间分布
+chartHelper.instances.m_nwAreaRate = {
+  config: {
+    dom: document.getElementById('nwAreaRate'),
+    type: ecHelper.type.pie
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option: {
+    legend: {
+      x: 'center',
+      y: 'bottom',
+      //data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+      data: []
+    },
+    //calculable: true,
+    series: [
+      {
+        name: '面积模式',
+        type: 'pie',
+        radius: [23, 68],
+        center: ['50%', '55%'],
+        roseType: 'area',
+        itemStyle: {
+          normal: {
+            label: {
+              normal: {
+                formatter: '{a}{b}%'
+              }
+            },
+          },
+        },
+        x: '50%',
+        max: 40,
+        sort: 'ascending',
+        data: [
+          { value: 10, name: '数据1' },
+          { value: 5, name: '数据2' },
+          { value: 15, name: '数据3' },
+          { value: 15, name: '数据4' },
+          { value: 15, name: '数据5' },
+          { value: 25, name: '数据6' }
+        ]
+      }
+    ]
+  }
 
 };
+//风控：用户模型区间分布
+chartHelper.instances.m_userModelArea = {
+  config: {
+    dom: document.getElementById('userModelArea'),
+    type: ecHelper.type.pie
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option: {
+    legend: {
+      x: 'center',
+      y: 'bottom',
+      data: []
+    },
+    //calculable: true,
+    series: [
+      {
+        name: '面积模式',
+        type: 'pie',
+        radius: [0, 65],
+        center: ['50%', '55%'],
+        itemStyle: {
+          normal: {
+            label: {
+              normal: {
+                formatter: '{a}{b}%'
+              }
+            }
+          }
+        },
+        x: '50%',
+        max: 40,
+        sort: 'ascending',
+        data: [
+          { value: 10, name: '区间1' },
+          { value: 5, name: '区间2' },
+          { value: 15, name: '区间3' },
+          { value: 15, name: '区间4' },
+          { value: 15, name: '区间5' },
+          { value: 25, name: '区间6' }
+        ]
+      }
+    ]
+  }
+
+};
+
+//风控：你我分模型结果
+chartHelper.instances.m_nwResultBar = {
+    config: {
+        dom: document.getElementById('nwResultBar'),
+        type: ecHelper.type.bar
+    },
+    //初始化实例
+    init: function () {
+        ecHelper.init(this.config.dom, this.config.type, this.option);
+    },
+    //
+    option: {
+        textStyle: {
+            color: '#FFF'
+        },
+        grid: {
+            x:40,
+            y:33,
+            x2:20,
+            y2:30,
+            borderColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            backgroundColor: 'rgba(0,0,0,0)'
+        },
+        xAxis: {
+            type: 'category',
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                interval: 0,
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#205492',
+                    width: 1
+                }
+            },
+            data: ['01-15', '01-16', '01-17', '01-18', '01-19']
+        },
+        yAxis: {
+            type: 'value',
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#205492',
+                    width: 1
+                }
+            }
+        },
+        series: [
+            {
+                name: '通过',
+                type: 'bar',
+                barWidth: 25,
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#35A3FA'
+                    }
+                },
+                stack: '反欺诈识别结果',
+                data: [120, 132, 101, 134, 90]
+            },
+            {
+                name: '拒绝',
+                type: 'bar',
+                barWidth: 25,
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#FECB33'
+                    }
+                },
+                stack: '反欺诈识别结果',
+                data: [220, 182, 191, 234, 290]
+            }
+        ]
+    },
+
+    //更新图表
+    update: function (data) {
+        //拒绝
+        var refuses = [];
+        //通过
+        var passs = [];
+        var xAxisCatagory = [];
+        data.forEach(function (model) {
+            xAxisCatagory.push(model.Date);
+            refuses.push(model.RefuseNumbers);
+            passs.push(model.PassNumbers);
+        });
+        this.option.series[0].data = passs;
+        this.option.series[1].data = refuses;
+        this.option.xAxis.data = xAxisCatagory;
+
+        this.init();
+    }
+};
+
+//风控：用户模型效果分布
+chartHelper.instances.m_userModelBar = {
+  config: {
+    dom: document.getElementById('userModelBar'),
+    type: ecHelper.type.bar
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option:   {
+    calculable : true,
+    grid: {
+      x:50,
+      y:15,
+      x2:25,
+      y2:35,
+      borderWidth: 0
+    },
+    xAxis : [
+      {
+        type : 'value',
+        boundaryGap : [0, 0.01],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    yAxis : [
+      {
+        type : 'category',
+        data : ['≤25','25-30','30-35','35-40','40-45','45-50'],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    series : [
+      {
+        name:'2011年',
+        type:'bar',
+        barCategoryGap: 10,
+        data:[18203, 23489, 29034, 104970, 131744, 630230],
+        itemStyle: {
+          normal: {
+            color:'#35A3FA',
+            barBorderRadius: [0, 5, 5, 0]
+          }
+        }
+      }
+    ]
+  }
+
+};
+
+//风控：你我分模型效果分布
+chartHelper.instances.m_nwModelBar = {
+  config: {
+    dom: document.getElementById('nwModelBar'),
+    type: ecHelper.type.bar
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option:   {
+    calculable : true,
+    grid: {
+      x:50,
+      y:15,
+      x2:25,
+      y2:35,
+      borderWidth: 0
+    },
+    xAxis : [
+      {
+        type : 'value',
+        boundaryGap : [0, 0.01],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    yAxis : [
+      {
+        type : 'category',
+        data : ['≤25','25-30','30-35','35-40','40-45','45-50'],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    series : [
+      {
+        name:'2011年',
+        type:'bar',
+        barCategoryGap: 10,
+        data:[18203, 23489, 29034, 104970, 131744, 630230],
+        itemStyle: {
+          normal: {
+            color:'#35A3FA',
+            barBorderRadius: [0, 5, 5, 0]
+          }
+        }
+      }
+    ]
+  }
+
+};
+
+//风控：用户申请分布
+chartHelper.instances.m_userApplyShow = {
+  config: {
+    dom: document.getElementById('userApplyShow'),
+    type: ecHelper.type.bar
+  },
+  //初始化实例
+  init: function () {
+    ecHelper.init(this.config.dom, this.config.type, this.option);
+  },
+  //
+  option:   {
+    calculable : true,
+    grid: {
+      x:50,
+      y:15,
+      x2:25,
+      y2:35,
+      borderWidth: 0
+    },
+    xAxis : [
+      {
+        type : 'value',
+        boundaryGap : [0, 0.01],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    yAxis : [
+      {
+        type : 'category',
+        data : ['≤25','25-30','30-35','35-40','40-45','45-50'],
+        axisLabel: {
+          interval: 0,
+          textStyle: {
+            color: '#FFF'
+          }
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    series : [
+      {
+        name:'2011年',
+        type:'bar',
+        barCategoryGap: 10,
+        data:[18203, 23489, 29034, 104970, 131744, 630230],
+        itemStyle: {
+          normal: {
+            color:'#35A3FA',
+            barBorderRadius: [0, 5, 5, 0]
+          }
+        }
+      }
+    ]
+  }
+
+};
+
+
+
 
 //辅屏(左上角)：房、车贷地图
 chartHelper.instances.a_Map = {
