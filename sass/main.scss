@@ -509,6 +509,96 @@ $text-blue: #119bd8;
   }
 }
 
+.board-house-bid-current{
+  background:url("../images/bg-board-house-bid-current.png") no-repeat;
+  width:423px;
+  height:150px;
+  padding:6px 1px 7px 6px;
+  .title{
+    width:417px;
+    color:#119BD8;
+    height:28px;
+    line-height:28px;
+    text-indent:10px;
+    @extend %textEllipsis;
+
+    span{ margin-right:20px; font-size:9px; }
+  }
+
+  .body{
+    height:84px;
+    color:#FFF;
+  }
+  dl{
+    dd{
+      height:42px;
+      float:left;
+      line-height:42px;
+      font-size:9px;
+      text-indent:10px;
+      overflow:hidden;
+      color:#FFF;
+
+      &:nth-of-type(1){ width:150px;}
+      &:nth-of-type(2){ width:122px;}
+      &:nth-of-type(3){ width:128px;}
+
+      span{ color:#FFD200; }
+      b{
+        font-size:12px;
+        font-weight:bold;
+      }
+    }
+  }
+
+  .description{
+    width:417px;
+    padding:5px 0;
+    color:#FFF;
+    font-size:9px;
+    height:24px;
+    line-height:24px;
+    text-indent:10px;
+    @extend %textEllipsis;
+  }
+}
+.board-house-bid-current-container{
+  $width:423px;
+  $height:163px;
+  width:$width;
+  height:$height;
+  overflow:hidden;
+  position:relative;
+  ul{ width:$width; height:$height;}
+
+  li{
+    position:absolute;
+    display:block;
+    opacity:0;
+    z-index:-1;
+    @extend .board-house-bid-current;
+    @include transition(all .7s);
+    top:0;
+    left:0;
+  }
+
+  .li-01,.li-02,.li-04{ z-index:1;}
+  .li-01{
+    opacity:1;
+    @include transform(translate3d(0, 0, 0));
+  }
+  .li-02{
+    @include transform(translate3d($width, 0, 0));
+  }
+  .li-04{
+    @include transform(translate3d(-$width, 0, 0));
+  }
+  .li-03{
+    z-index:-1;
+    @include transform(none);
+  }
+}
+
 
 /* 房贷 */
 .page02{

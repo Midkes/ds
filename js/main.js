@@ -198,6 +198,10 @@ $(function(){
 
   jQuery(".board-financing-body").slide({mainCell:".wrap",autoPlay:true,effect:"topLoop",vis:5,delayTime:700});
 
+    $(".board-house-bid-current-container").rotateTabs({
+      interval: 4000
+    });
+
     $(".board-bid-current-container").rotateTabs({
         interval: 4000
     });
