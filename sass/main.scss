@@ -509,7 +509,8 @@ $text-blue: #119bd8;
   }
 }
 
-.board-house-bid-current{
+//旧版实时发布标样式
+.board-bid-current2{
   background:url("../images/bg-board-house-bid-current.png") no-repeat;
   width:423px;
   height:150px;
@@ -562,7 +563,7 @@ $text-blue: #119bd8;
     @extend %textEllipsis;
   }
 }
-.board-house-bid-current-container{
+.board-bid-current2-container{
   $width:423px;
   $height:163px;
   width:$width;
@@ -576,7 +577,7 @@ $text-blue: #119bd8;
     display:block;
     opacity:0;
     z-index:-1;
-    @extend .board-house-bid-current;
+    @extend .board-bid-current2;
     @include transition(all .7s);
     top:0;
     left:0;

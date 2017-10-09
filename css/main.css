@@ -25,7 +25,7 @@ a, a:hover { text-decoration: none; outline: none; -webkit-tap-highlight-color: 
   100% { -webkit-transform: scale3d(0.3, 0.3, 0.3); -ms-transform: scale3d(0.3, 0.3, 0.3); transform: scale3d(0.3, 0.3, 0.3); opacity: 0; top: 43px; left: 99px; } }
 @-webkit-keyframes eddyPre { 0% { opacity: 0; }
   100% { opacity: 1; } }
-.page01 .board-track .side-l dd, .board-bid-current dl dd, .board-bid-current-container li dl dd, .board-house-bid-current .title, .board-house-bid-current-container li .title, .board-house-bid-current .description, .board-house-bid-current-container li .description { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+.page01 .board-track .side-l dd, .board-bid-current dl dd, .board-bid-current-container li dl dd, .board-bid-current2 .title, .board-bid-current2-container li .title, .board-bid-current2 .description, .board-bid-current2-container li .description { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 
 .page-frame { width: 3840px; height: 1080px; overflow: hidden; }
 
@@ -152,26 +152,26 @@ a, a:hover { text-decoration: none; outline: none; -webkit-tap-highlight-color: 
 .board-bid-current-container .li-04 { -webkit-transform: translate3d(-423px, 0, 0); -moz-transform: translate3d(-423px, 0, 0); -ms-transform: translate3d(-423px, 0, 0); -o-transform: translate3d(-423px, 0, 0); transform: translate3d(-423px, 0, 0); }
 .board-bid-current-container .li-03 { z-index: -1; -webkit-transform: none; -moz-transform: none; -ms-transform: none; -o-transform: none; transform: none; }
 
-.board-house-bid-current, .board-house-bid-current-container li { background: url("../images/bg-board-house-bid-current.png") no-repeat; width: 423px; height: 150px; padding: 6px 1px 7px 6px; }
-.board-house-bid-current .title, .board-house-bid-current-container li .title { width: 417px; color: #119BD8; height: 28px; line-height: 28px; text-indent: 10px; }
-.board-house-bid-current .title span, .board-house-bid-current-container li .title span { margin-right: 20px; font-size: 9px; }
-.board-house-bid-current .body, .board-house-bid-current-container li .body { height: 84px; color: #FFF; }
-.board-house-bid-current dl dd, .board-house-bid-current-container li dl dd { height: 42px; float: left; line-height: 42px; font-size: 9px; text-indent: 10px; overflow: hidden; color: #FFF; }
-.board-house-bid-current dl dd:nth-of-type(1), .board-house-bid-current-container li dl dd:nth-of-type(1) { width: 150px; }
-.board-house-bid-current dl dd:nth-of-type(2), .board-house-bid-current-container li dl dd:nth-of-type(2) { width: 122px; }
-.board-house-bid-current dl dd:nth-of-type(3), .board-house-bid-current-container li dl dd:nth-of-type(3) { width: 128px; }
-.board-house-bid-current dl dd span, .board-house-bid-current-container li dl dd span { color: #FFD200; }
-.board-house-bid-current dl dd b, .board-house-bid-current-container li dl dd b { font-size: 12px; font-weight: bold; }
-.board-house-bid-current .description, .board-house-bid-current-container li .description { width: 417px; padding: 5px 0; color: #FFF; font-size: 9px; height: 24px; line-height: 24px; text-indent: 10px; }
+.board-bid-current2, .board-bid-current2-container li { background: url("../images/bg-board-house-bid-current.png") no-repeat; width: 423px; height: 150px; padding: 6px 1px 7px 6px; }
+.board-bid-current2 .title, .board-bid-current2-container li .title { width: 417px; color: #119BD8; height: 28px; line-height: 28px; text-indent: 10px; }
+.board-bid-current2 .title span, .board-bid-current2-container li .title span { margin-right: 20px; font-size: 9px; }
+.board-bid-current2 .body, .board-bid-current2-container li .body { height: 84px; color: #FFF; }
+.board-bid-current2 dl dd, .board-bid-current2-container li dl dd { height: 42px; float: left; line-height: 42px; font-size: 9px; text-indent: 10px; overflow: hidden; color: #FFF; }
+.board-bid-current2 dl dd:nth-of-type(1), .board-bid-current2-container li dl dd:nth-of-type(1) { width: 150px; }
+.board-bid-current2 dl dd:nth-of-type(2), .board-bid-current2-container li dl dd:nth-of-type(2) { width: 122px; }
+.board-bid-current2 dl dd:nth-of-type(3), .board-bid-current2-container li dl dd:nth-of-type(3) { width: 128px; }
+.board-bid-current2 dl dd span, .board-bid-current2-container li dl dd span { color: #FFD200; }
+.board-bid-current2 dl dd b, .board-bid-current2-container li dl dd b { font-size: 12px; font-weight: bold; }
+.board-bid-current2 .description, .board-bid-current2-container li .description { width: 417px; padding: 5px 0; color: #FFF; font-size: 9px; height: 24px; line-height: 24px; text-indent: 10px; }
 
-.board-house-bid-current-container { width: 423px; height: 163px; overflow: hidden; position: relative; }
-.board-house-bid-current-container ul { width: 423px; height: 163px; }
-.board-house-bid-current-container li { position: absolute; display: block; opacity: 0; z-index: -1; -webkit-transition: all 0.7s; -moz-transition: all 0.7s; -o-transition: all 0.7s; transition: all 0.7s; top: 0; left: 0; }
-.board-house-bid-current-container .li-01, .board-house-bid-current-container .li-02, .board-house-bid-current-container .li-04 { z-index: 1; }
-.board-house-bid-current-container .li-01 { opacity: 1; -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
-.board-house-bid-current-container .li-02 { -webkit-transform: translate3d(423px, 0, 0); -moz-transform: translate3d(423px, 0, 0); -ms-transform: translate3d(423px, 0, 0); -o-transform: translate3d(423px, 0, 0); transform: translate3d(423px, 0, 0); }
-.board-house-bid-current-container .li-04 { -webkit-transform: translate3d(-423px, 0, 0); -moz-transform: translate3d(-423px, 0, 0); -ms-transform: translate3d(-423px, 0, 0); -o-transform: translate3d(-423px, 0, 0); transform: translate3d(-423px, 0, 0); }
-.board-house-bid-current-container .li-03 { z-index: -1; -webkit-transform: none; -moz-transform: none; -ms-transform: none; -o-transform: none; transform: none; }
+.board-bid-current2-container { width: 423px; height: 163px; overflow: hidden; position: relative; }
+.board-bid-current2-container ul { width: 423px; height: 163px; }
+.board-bid-current2-container li { position: absolute; display: block; opacity: 0; z-index: -1; -webkit-transition: all 0.7s; -moz-transition: all 0.7s; -o-transition: all 0.7s; transition: all 0.7s; top: 0; left: 0; }
+.board-bid-current2-container .li-01, .board-bid-current2-container .li-02, .board-bid-current2-container .li-04 { z-index: 1; }
+.board-bid-current2-container .li-01 { opacity: 1; -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+.board-bid-current2-container .li-02 { -webkit-transform: translate3d(423px, 0, 0); -moz-transform: translate3d(423px, 0, 0); -ms-transform: translate3d(423px, 0, 0); -o-transform: translate3d(423px, 0, 0); transform: translate3d(423px, 0, 0); }
+.board-bid-current2-container .li-04 { -webkit-transform: translate3d(-423px, 0, 0); -moz-transform: translate3d(-423px, 0, 0); -ms-transform: translate3d(-423px, 0, 0); -o-transform: translate3d(-423px, 0, 0); transform: translate3d(-423px, 0, 0); }
+.board-bid-current2-container .li-03 { z-index: -1; -webkit-transform: none; -moz-transform: none; -ms-transform: none; -o-transform: none; transform: none; }
 
 /* 房贷 */
 .page02 .page-title i { background-position: -33px 0; }
